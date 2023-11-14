@@ -2,7 +2,8 @@
 #include "Novice.h"
 #include "Vector2.h"
 #include "ImGuiManager.h"
-#include <dinput.h>
+#include "InputManager.h"
+#include "PlayerBullet.h"
 class Player{
 public:
 	void Init();
@@ -10,14 +11,13 @@ public:
 	void Draw();
 
 
+	Vector2 Getpos() { return pos; }
 private:
 	Vector2 pos;
 	Vector2 size;
 	float speed;
-
-	// キー入力結果を受け取る箱
-	char keys[256] = { 0 };
-	char preKeys[256] = { 0 };
+	PlayerBullet* playerBullet_;
+	InputManager* inputManager = nullptr;
 
 };
 

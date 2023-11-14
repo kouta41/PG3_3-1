@@ -2,6 +2,7 @@
 
 void Player::Init()
 {
+	inputManager = InputManager::GetInstance();
 
 	pos = { 50,300 };
 	size = { 32,32 };
@@ -10,17 +11,21 @@ void Player::Init()
 
 void Player::Update()
 {
-	if (keys[DIK_UP]) {
+	if (inputManager->IsPressKey(DIK_UP)) {
 		pos.y -= speed;
 	}
-	if (keys[DIK_DOWN]) {
+	if (inputManager->IsPressKey(DIK_DOWN)) {
 		pos.y += speed;
 	}
-	if (keys[DIK_LEFT]) {
+	if (inputManager->IsPressKey(DIK_LEFT)) {
 		pos.x -= speed;
 	}
-	if (keys[DIK_RIGHT]) {
+	if (inputManager->IsPressKey(DIK_RIGHT)) {
 		pos.x += speed;
+	}
+
+	if (inputManager->IsPressKey(DIK_RSHIFT)) {
+		playerBullet_->Update();
 	}
 }
 
