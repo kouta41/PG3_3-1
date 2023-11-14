@@ -1,5 +1,7 @@
 #include <Novice.h>
 
+#include "GameManager.h"
+
 const char kWindowTitle[] = "LE2B_18_ツシマコウタ";
 
 // Windowsアプリでのエントリーポイント(main関数)
@@ -11,6 +13,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
 	char preKeys[256] = {0};
+
+	GameManager* gameManager = new GameManager;
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -24,15 +28,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓更新処理ここから
 		///
-
+		gameManager->Update();
 		///
 		/// ↑更新処理ここまで
 		///
 
-		///
+		///    
 		/// ↓描画処理ここから
 		///
-
+		gameManager->Draw();
 		///
 		/// ↑描画処理ここまで
 		///
